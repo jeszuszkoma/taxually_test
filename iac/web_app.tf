@@ -10,14 +10,14 @@ resource "azurerm_linux_web_app" "TestXamApp" {
     always_on = true
   }
 
-  # auth_settings {
-  #   enabled               = true
-  #   active_directory {
-  #     client_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  #   }
-  #   default_provider = "AzureActiveDirectory"
-  #   issuer = "https://login.microsoftonline.com/<tenant_id>"
-  # }
+  auth_settings {
+    enabled               = true
+    active_directory {
+      client_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+    default_provider = "AzureActiveDirectory"
+    issuer = "https://login.microsoftonline.com/<tenant_id>"
+  }
 
   app_settings = {
     "ServiceBus_ConnectionString" = azurerm_servicebus_namespace.TestXam_ServiceBus_Namespace.default_primary_connection_string
